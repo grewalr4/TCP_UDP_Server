@@ -1,0 +1,85 @@
+
+# This is an example README.
+# A README file is required. You will run your server program and client 
+# program and paste the log in your README file.
+
+Server:
+  Usage:
+    ./project1_server
+
+  Game play:
+    none
+
+  Log:
+<130 arctic:~/project1_skeleton >./project1_server
+[SYS] Parent process for TCP communication.
+[TCP] Bulls and Cows game server started...
+[TCP] port: 36877
+[SYS] Child process forked
+[TCP] Recv: JOIN 
+[UDP:42692] Gameplay server started
+[TCP] Sent: JOIN 
+[UDP:42692] A new game has started.
+[UDP:42692] Secret number: 1867
+[UDP] Recv: GUESS 1234
+[UDP] Sent: RESPONSE 1A0B
+[UDP] Recv: GUESS 1867
+[UDP] Sent: RESPONSE 4A0B
+[UDP:42692] A new game has started.
+[UDP:42692] Secret number: 2947
+[UDP] Recv: GUESS 2940
+[UDP] Sent: RESPONSE 3A0B
+[UDP] Recv: GUESS 2947
+[UDP] Sent: RESPONSE 4A0B
+[UDP:42692] A new game has started.
+[UDP:42692] Secret number: 1904
+[UDP] Recv: EXIT 
+[UDP] Sent: EXIT_GRANT Exit granted, goodbye.
+[SYS] child process terminated
+
+Client:
+  Usage:
+    ./project1_client -p <tcp_port> -s <server_addr>
+
+  Game play:
+    - guess
+      GUESS <guess_number>
+    - exit
+      EXIT
+
+  Log:
+<129 arctic:~/project1_skeleton >./project1_client -s arctic.cse.msu.edu -p 36877
+[TCP] Bulls and Cows client started...
+[TCP] Connecting to server: arctic.cse.msu.edu:36877
+[TCP] Sent: JOIN 
+[TCP] Recv: JOIN_GRANT 42692
+[UDP] Guesses will be sent to: arctic.cse.msu.edu at port:42692
+[GAM] A new secret number is generated
+[GAM] Enter your guess
+[CMD] GUESS 1234
+[UDP] Sent: GUESS 1234
+[UDP] Recv: RESPONSE 1A0B
+[GAM] Bulls (A): 1 | Cows (B): 0
+[CMD] GUESS 1867
+[UDP] Sent: GUESS 1867
+[UDP] Recv: RESPONSE 4A0B
+[GAM] Bulls (A): 4 | Cows (B): 0
+[GAM] You win!
+[GAM] The game is restarting
+[GAM] A new secret number is generated
+[GAM] Enter your guess
+[CMD] GUESS 2940
+[UDP] Sent: GUESS 2940
+[UDP] Recv: RESPONSE 3A0B
+[GAM] Bulls (A): 3 | Cows (B): 0
+[CMD] GUESS 2947
+[UDP] Sent: GUESS 2947
+[UDP] Recv: RESPONSE 4A0B
+[GAM] Bulls (A): 4 | Cows (B): 0
+[GAM] You win!
+[GAM] The game is restarting
+[GAM] A new secret number is generated
+[GAM] Enter your guess
+[CMD] EXIT
+[UDP] Sent: EXIT 
+[UDP] Recv: EXIT_GRANT Exit granted, goodbye.
